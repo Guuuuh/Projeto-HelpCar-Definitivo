@@ -25,6 +25,9 @@ public class Empresa {
 	@Column(name = "cnpj")
 	private String cnpj;
 	
+	@Column(name = "ramoatuacao")
+	private String ramoAtuacao;
+	
 	@Column(name = "contatoempresa")
 	private String contatoEmpresa;
 	
@@ -35,10 +38,11 @@ public class Empresa {
 		
 	}
 	
-	public Empresa (int codEmpresa, String nomeFantasia, String cnpj, String contatoEmpresa) {
+	public Empresa (int codEmpresa, String nomeFantasia, String cnpj, String ramoAtuacao, String contatoEmpresa) {
 		this.codEmpresa = codEmpresa;
 		this.nomeFantasia = nomeFantasia;
 		this.cnpj = cnpj;
+		this.ramoAtuacao = ramoAtuacao;
 		this.contatoEmpresa = contatoEmpresa;
 	}
 	
@@ -52,7 +56,15 @@ public class Empresa {
 	}
 	
 	public String getCnpj() {
+		return cnpj;
+	}
+	
+	public String getContatoEmpresa() {
 		return contatoEmpresa;
+	}
+	
+	public String getRamoAtuacao() {
+		return ramoAtuacao;
 	}
 	
 	public List<Endereco> getEnderecoEmpresa () {
@@ -66,6 +78,10 @@ public class Empresa {
 	
 	public void setCnpj (String cnpj) {
 		this.cnpj = cnpj;
+	}
+	
+	public void setRamoAtuacao (String ramoAtuacao) {
+		this.ramoAtuacao = ramoAtuacao;
 	}
 	
 	public void setContatoEmpresa (String contatoEmpresa) {
@@ -85,7 +101,7 @@ public class Empresa {
 	//toString
 	@Override
 	public String toString() {
-		return "Empresa ={" + "codEmpresa = " + codEmpresa + " nomeFantasia = " + nomeFantasia + " cnpj = " + cnpj + " contatoEmpresa = " + contatoEmpresa;
+		return "Empresa ={" + "codEmpresa = " + codEmpresa + " nomeFantasia = " + nomeFantasia + " cnpj = " + cnpj + " ramoAtuacao = " + ramoAtuacao + " contatoEmpresa = " + contatoEmpresa;
 	}
 	
 }
