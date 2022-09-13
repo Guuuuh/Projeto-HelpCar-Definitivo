@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.example.demo.service;
 
-/**
- *
- * @author gusta
- */
-public class TipoServicoServiceImpl {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TipoServicoServiceImpl implements TipoServicoService {
+    
+    @Autowired
+    private TipoServicoService
     
 }
