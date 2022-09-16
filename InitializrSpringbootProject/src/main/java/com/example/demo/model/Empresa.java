@@ -2,7 +2,16 @@ package com.example.demo.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 
 @Entity
 @Table (name = "empresa")
@@ -82,7 +91,12 @@ public class Empresa {
 	public void setContatoEmpresa (String contatoEmpresa) {
 		this.contatoEmpresa = contatoEmpresa;
 	}
+        
+        public void setEnderecosEmpresas (List<Endereco> EnderecosEmpresas){
+            this.enderecosEmpresas = enderecosEmpresas;
+        }
 	
+       
 	//addEndereco
 	public void addEndereco (Endereco Endereco) {
 		this.enderecosEmpresas.add(Endereco);
@@ -92,11 +106,12 @@ public class Empresa {
 	public void removeEdereco (Endereco Endereco) {
 		this.enderecosEmpresas.remove(Endereco);
 	}
+
+        @Override
+        public String toString() {
+            return "Empresa{" + "codEmpresa=" + codEmpresa + ", nomeFantasia=" + nomeFantasia + ", cnpj=" + cnpj + ", ramoAtuacao=" + ramoAtuacao + ", contatoEmpresa=" + contatoEmpresa + ", enderecosEmpresas=" + enderecosEmpresas + '}';
+        }
 	
-	//toString
-	@Override
-	public String toString() {
-		return "Empresa ={" + "codEmpresa = " + codEmpresa + " nomeFantasia = " + nomeFantasia + " cnpj = " + cnpj + " ramoAtuacao = " + ramoAtuacao + " contatoEmpresa = " + contatoEmpresa;
-	}
+	
 	
 }
