@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +26,10 @@ public class TipoServico {
     @JoinColumn(name = "codempresa")
     @JsonIgnore
     private Empresa empresa;
+    
+    @OneToMany
+    @JoinColumn(name = "codtiposervico")
+    private List<Servico> servicos = new ArrayList<>();
     
     @Column(name = "descricao")
     private String descricao;
