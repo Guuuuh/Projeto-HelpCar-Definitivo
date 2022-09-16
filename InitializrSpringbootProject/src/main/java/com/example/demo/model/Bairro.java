@@ -1,13 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.example.demo.model;
 
-/**
- *
- * @author gusta
- */
 public class Bairro {
-    
+
+    private Integer codBairro;
+    private String nome;
+    private Cidade cidade;
+
+    public Bairro() {
+    }
+
+    public Bairro(Integer codBairro, String nome, Cidade cidade) {
+        this.codBairro = codBairro;
+        this.nome = nome;
+        this.cidade = cidade;
+    }
+
+    public Integer getCodBairro() {
+        return codBairro;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCidae(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Bairro{" + "codBairro=" + codBairro + ", nome=" + nome + ", cidade=" + cidade + '}';
+    }
+
 }
