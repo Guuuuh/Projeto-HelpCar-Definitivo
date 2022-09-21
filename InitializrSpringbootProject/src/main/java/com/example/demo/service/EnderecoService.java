@@ -8,7 +8,7 @@ public interface EnderecoService {
     
     public Endereco salvaEndereco (Endereco endereco);
    
-    public List<Endereco> listaEndereco ();
+    public List<Endereco> listaEnderecos ();
     
     public Optional<Endereco> getByIdEndereco(Integer Endereco);
     
