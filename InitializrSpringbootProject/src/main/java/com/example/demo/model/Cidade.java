@@ -1,10 +1,28 @@
 package com.example.demo.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "cidade")
 public class Cidade {
 
+    @Id
+    @Column(name = "codcidade")
     private Integer codCidade;
+
+    @Column(name = "nome")
     private String nome;
-    private Estado estado;
+
+    @OneToMany
+    @JoinColumn(name = "codestado")
+    private List<Estado> estados = new ArrayList<>();
 
     public Cidade() {
     }
@@ -12,7 +30,6 @@ public class Cidade {
     public Cidade(Integer codCidade, String nome, Estado estado) {
         this.codCidade = codCidade;
         this.nome = nome;
-        this.estado = estado;
     }
 
     public Integer getCodCidade() {
@@ -23,21 +40,21 @@ public class Cidade {
         return nome;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public List<Estado> getEstados() {
+        return estados;
+    }
+
+    public void setEstados(List<Estado> estados) {
+        this.estados = estados;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
     @Override
     public String toString() {
-        return "Cidade{" + "codCidade=" + codCidade + ", nome=" + nome + ", estado=" + estado + '}';
+        return "Cidade{" + "codCidade=" + codCidade + ", nome=" + nome + ", estados=" + estados + '}';
     }
 
 }

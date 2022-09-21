@@ -11,14 +11,6 @@ import javax.persistence.Table;
 @Table(name = "estado")
 public class Estado {
 
-    private Integer codEstado;
-    private String nome;
-    private String uf;
-    private String pais;
-
-    public Estado() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codestado")
@@ -26,6 +18,12 @@ public class Estado {
 
     @Column(name = "nome")
     private String nome;
+
+    @Column(name = "uf")
+    private String uf;
+
+    @Column(name = "pais")
+    private String pais;
 
     public Estado(Integer codEstado, String nome, String uf, String pais) {
         this.codEstado = codEstado;
@@ -66,5 +64,4 @@ public class Estado {
     public String toString() {
         return "Estado{" + "codEstado=" + codEstado + ", nome=" + nome + ", uf=" + uf + ", pais=" + pais + '}';
     }
-
 }
