@@ -1,17 +1,34 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table (name = "endereco")
 public class Endereco {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "codendereco")
     private Integer codEndereco;
+
+    @Column(name = "cep")
     private String cep;
+
+    @Column (name = "rua")
     private String rua;
+
+    @Column (name = "numero")
     private int numero;
+
+    @Column (name = "bairro")
     private Bairro bairro;
+
+    @OneToMany (cascade = CascadeType.ALL)
+    @JoinColumn (name = "codempresa")
     private Empresa empresa;
+
+    @OneToMany (cascade = CascadeType.ALL)
+    @JoinColumn (name = "codcliente")
     private Cliente cliente;
 
     public Endereco() {
