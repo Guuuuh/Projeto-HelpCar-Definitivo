@@ -3,6 +3,7 @@ package com.example.demo.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,8 @@ public class Cliente {
     @Column(name = "cpf")
     private String cpf;
     
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "codcliente")
     private List<Endereco> enderecoCliente = new ArrayList<>();
     
     @OneToMany

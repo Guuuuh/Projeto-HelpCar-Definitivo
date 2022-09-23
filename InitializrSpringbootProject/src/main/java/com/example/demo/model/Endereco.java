@@ -23,11 +23,11 @@ public class Endereco {
     @Column (name = "bairro")
     private Bairro bairro;
 
-    @OneToMany (cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn (name = "codempresa")
     private Empresa empresa;
 
-    @OneToMany (cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn (name = "codcliente")
     private Cliente cliente;
 
