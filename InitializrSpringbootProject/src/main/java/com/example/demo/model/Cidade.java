@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +20,7 @@ public class Cidade {
     @Column(name = "nome")
     private String nome;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "codestado")
     private List<Estado> estados = new ArrayList<>();
 

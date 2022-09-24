@@ -1,9 +1,25 @@
 package com.example.demo.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "bairro")
 public class Bairro {
 
+    @Id
+    @Column(name = "codbairro")
     private Integer codBairro;
+    
+    @Column(name = "nome")
     private String nome;
+    
+    @ManyToOne
+    @JoinColumn(name = "codcidade")
     private Cidade cidade;
 
     public Bairro() {
