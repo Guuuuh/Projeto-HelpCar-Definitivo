@@ -14,6 +14,8 @@ public interface EstadoService {
 
     public Optional<Estado> getByIdEstado(Integer codEstado);
 
+    public Estado salvaEstado(Estado estado);
+
     public Estado atualizaEstado(Estado estado);
 
     public void deleteByIdEstado(Integer codEstado);
