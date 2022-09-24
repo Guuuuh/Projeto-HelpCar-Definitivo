@@ -1,4 +1,3 @@
-
 package com.example.demo.service;
 
 import com.example.demo.model.Bairro;
@@ -11,13 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author gabrielvitoretti
  */
-public class BairroServiceImpl implements BairroService{
+public class BairroServiceImpl implements BairroService {
 
     @Autowired
     private BairroRepository bairroRepository;
+
     @Override
     public List<Bairro> listaBairros() {
-       return bairroRepository.findAll();
+        return bairroRepository.findAll();
     }
 
     @Override
@@ -34,5 +34,10 @@ public class BairroServiceImpl implements BairroService{
     public void deleteByIdBairro(Integer codBairro) {
         bairroRepository.deleteById(codBairro);
     }
-    
+
+    @Override
+    public Bairro salvaBairro(Bairro bairro) {
+        return bairroRepository.save(bairro);
+    }
+
 }
