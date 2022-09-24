@@ -11,35 +11,45 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author goularte
  */
+@RestController
+@RequestMapping("/api")
 public class EstadoController {
 
     @Autowired
     private EstadoService estadoService;
 
-    @GetMapping("/estados")
-    public ResponseEntity<List<estado>> listaClientes() {
+    @GetMapping("/estado")
+    public ResponseEntity<List<Estado>> listaEstados() {
         return ResponseEntity.status(HttpStatus.OK).body(estadoService.listaEstados());
     }
 
     @GetMapping("estado/{codestado}")
-    public ResponseEntity<Optional<Estado>> getByIdCliente(@PathVariable Integer codEstado) {
-        return ResponseEntity.status(HttpStatus.OK).body(estadoService.getByIdCliente(codEstado));
+    public ResponseEntity<Optional<Estado>> getByIdEstado(@PathVariable Integer codestado) {
+        return ResponseEntity.status(HttpStatus.OK).body(estadoService.getByIdEstado(codestado));
     }
 
-    @PostMapping("atualizar")
-    public ResponseEntity<Estado> atualizaVeiculo(@RequestBody Estado estado) {
-        return ResponseEntity.status(HttpStatus.OK).body(estadoService.atualizaestado(estado));
+    @PostMapping("estado")
+    public ResponseEntity<Estado> salvaEstado(@RequestBody Estado estado) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(EstadoService.salvaEstado(estado));
     }
 
-    @DeleteMapping("estado/{codEstado}")
-    public ResponseEntity<String> deleteByIdVeiculo(@PathVariable Integer codEstado) {
-        estadoService.deleteByIdEstado(codEstado);
-        return ResponseEntity.status(HttpStatus.OK).body("Estado removido com sucesso!");
+    @PutMapping("estado")
+    public ResponseEntity<Estado> atualizaEstado(@RequestBody Estado estado) {
+        return ResponseEntity.status(HttpStatus.OK).body(estadoService.atualizaEstado(estado));
+    }
+
+    @DeleteMapping("estado/{codestado}")
+    public ResponseEntity<String> deleteByIdEstado(@PathVariable Integer codestado) {
+        estadoService.deleteByIdEstado(codestado);
+        return ResponseEntity.status(HttpStatus.OK).body("Estado removida com sucesso");
     }
 }
