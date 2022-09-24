@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
@@ -25,10 +26,12 @@ public class Endereco {
 
     @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn (name = "codempresa")
+    @JsonIgnore
     private Empresa empresa;
 
     @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn (name = "codcliente")
+    @JsonIgnore
     private Cliente cliente;
 
     public Endereco() {

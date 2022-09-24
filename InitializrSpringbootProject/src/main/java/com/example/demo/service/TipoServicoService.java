@@ -12,7 +12,7 @@ public interface TipoServicoService {
     
     public Optional<TipoServico> getByIdTipoServico(Integer codTipoServico);
     
-    public TipoServico atualizaTipoServico(TipoServico tiposervico);
+    public TipoServico atualizaTipoServico(TipoServico tipoServico);
     
     public void deleteByIdTipoServico (Integer codTipoServico);
     
