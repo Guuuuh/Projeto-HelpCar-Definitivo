@@ -1,13 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.example.demo.service;
+
+import com.example.demo.model.Estado;
+import com.example.demo.repository.EstadoRepository;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
- * @author gusta
+ * @author goularte
  */
-public class EstadoServiceImpl {
-    
+public class EstadoServiceImpl implements EstadoService {
+
+    @Autowired
+    private EstadoRepository estadoRepository;
+
+    @Override
+    public List<Estado> listaEstados() {
+        return estadoRepository.findAll();
+    }
+
+    @Override
+    public Optional<Estado> getByIdEstado(Integer codEstado) {
+        return estadoRepository.findById(codEstado);
+    }
+
+    @Override
+    public Estado atualizaEstado(Estado estado) {
+        return estadoRepository.save(estado);
+    }
+
+    @Override
+    public void deleteByIdEstado(Integer codEstado) {
+        estadoRepository.deleteById(codEstado);
+    }
+
 }

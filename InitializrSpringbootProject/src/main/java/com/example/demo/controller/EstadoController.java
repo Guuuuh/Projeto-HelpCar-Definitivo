@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
- * @author goulrte
+ * @author goularte
  */
 public class EstadoController {
 
