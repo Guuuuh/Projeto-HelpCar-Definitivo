@@ -35,4 +35,9 @@ public class EstadoServiceImpl implements EstadoService {
         estadoRepository.deleteById(codEstado);
     }
 
+    @Override
+    public Estado salvaEstado(Estado estado) {
+        return estadoRepository.save(estado);
+    }
+
 }
