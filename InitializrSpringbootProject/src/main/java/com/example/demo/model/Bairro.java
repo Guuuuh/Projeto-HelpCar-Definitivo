@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -22,6 +23,10 @@ public class Bairro {
     @JoinColumn(name = "codcidade")
     private Cidade cidade;
 
+    @ManyToOne
+    @JoinColumn(name = "codendereco")
+    private Endereco endereco;
+    
     public Bairro() {
     }
 
@@ -51,9 +56,19 @@ public class Bairro {
         this.cidade = cidade;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
     @Override
     public String toString() {
-        return "Bairro{" + "codBairro=" + codBairro + ", nome=" + nome + ", cidade=" + cidade + '}';
+        return "Bairro{" + "codBairro=" + codBairro + ", nome=" + nome + ", cidade=" + cidade + ", endereco=" + endereco + '}';
     }
+    
+    
 
 }

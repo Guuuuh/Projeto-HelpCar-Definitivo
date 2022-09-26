@@ -1,8 +1,4 @@
-
 package com.example.demo.model;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,17 +15,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "veiculo")
-public class Veiculo implements Serializable{
+public class Veiculo {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codveiculo")
     private Integer codVeiculo;
-    
+   
     @ManyToOne
     @JoinColumn(name = "codcliente")
-    @JsonIgnore
-    private Cliente cliente;
+    private Veiculo veiculo;
     
     @Column(name = "marca")
     private String marca; 
@@ -46,13 +41,19 @@ public class Veiculo implements Serializable{
     public Veiculo() {
     }
 
-    public Veiculo(Integer codVeiculo, Cliente cliente, String marca, String modelo, String ano, String placa) {
-        this.codVeiculo = codVeiculo;
-        this.cliente = cliente;
+    public Veiculo(String marca, String modelo, String ano, String placa) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
         this.placa = placa;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
     }
 
     public Integer getCodVeiculo() {
@@ -62,15 +63,7 @@ public class Veiculo implements Serializable{
     public void setCodVeiculo(Integer codVeiculo) {
         this.codVeiculo = codVeiculo;
     }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
+    
     public String getMarca() {
         return marca;
     }
@@ -105,9 +98,8 @@ public class Veiculo implements Serializable{
 
     @Override
     public String toString() {
-        return "Veiculo{" + "codVeiculo=" + codVeiculo + ", cliente=" + cliente + ", marca=" + marca + ", modelo=" + modelo + ", ano=" + ano + ", placa=" + placa + '}';
+        return "Veiculo{" + "codVeiculo=" + codVeiculo + ", veiculo=" + veiculo + ", marca=" + marca + ", modelo=" + modelo + ", ano=" + ano + ", placa=" + placa + '}';
     }
-    
     
     
     

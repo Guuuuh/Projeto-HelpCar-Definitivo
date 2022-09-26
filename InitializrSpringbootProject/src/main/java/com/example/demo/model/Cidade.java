@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,7 +24,13 @@ public class Cidade {
 
     @ManyToOne
     @JoinColumn(name = "codestado")
-    private List<Estado> estados = new ArrayList<>();
+    @JsonIgnore
+    private Estado estado;
+    
+    @OneToMany
+    @JoinColumn(name = "codcidade")
+    @JsonIgnore
+    private List<Bairro> bairros = new ArrayList<>();
 
     public Cidade() {
     }
@@ -30,6 +38,23 @@ public class Cidade {
     public Cidade(Integer codCidade, String nome, Estado estado) {
         this.codCidade = codCidade;
         this.nome = nome;
+        this.estado = estado;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public List<Bairro> getBairros() {
+        return bairros;
+    }
+
+    public void setBairros(List<Bairro> bairros) {
+        this.bairros = bairros;
     }
 
     public Integer getCodCidade() {
@@ -39,22 +64,14 @@ public class Cidade {
     public String getNome() {
         return nome;
     }
-
-    public List<Estado> getEstados() {
-        return estados;
-    }
-
-    public void setEstados(List<Estado> estados) {
-        this.estados = estados;
-    }
-
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
 
     @Override
     public String toString() {
-        return "Cidade{" + "codCidade=" + codCidade + ", nome=" + nome + ", estados=" + estados + '}';
+        return "Cidade{" + "codCidade=" + codCidade + ", nome=" + nome + ", estados=" + '}';
     }
 
 }

@@ -1,6 +1,19 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 
 @Entity
 @Table (name = "endereco")
@@ -20,30 +33,38 @@ public class Endereco {
     @Column (name = "numero")
     private int numero;
 
-    @Column (name = "bairro")
-    private Bairro bairro;
-
     @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn (name = "codempresa")
     private Empresa empresa;
-
+    
+    
     @ManyToOne (cascade = CascadeType.ALL)
-    @JoinColumn (name = "codcliente")
+    @JoinColumn(name = "codcliente")
     private Cliente cliente;
+    
+    @OneToMany
+    @JoinColumn(name = "codendereco")
+    @JsonIgnore
+    private List<Bairro> bairros = new ArrayList<>();
+    
 
     public Endereco() {
     }
 
-    public Endereco(Integer codEndereco, String cep, String rua, int numero, Bairro bairro, Empresa empresa, Cliente cliente) {
-        this.codEndereco = codEndereco;
+    public Endereco(String cep, String rua, int numero, Bairro bairro, Empresa empresa) {
         this.cep = cep;
         this.rua = rua;
         this.numero = numero;
-        this.bairro = bairro;
         this.empresa = empresa;
-        this.cliente = cliente;
     }
 
+    public List<Bairro> getBairros() {
+        return bairros;
+    }
+
+    public void setBairros(List<Bairro> bairros) {
+        this.bairros = bairros;
+    }
     
     //getters
     public Integer getCodEndereco() {
@@ -62,19 +83,9 @@ public class Endereco {
         return numero;
     }
 
-    public Bairro getBairro() {
-        return bairro;
-    }
-
     public Empresa getEmpresa() {
         return empresa;
     }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-    
-    
     
     //setters
     public void setCep(String cep) {
@@ -89,24 +100,16 @@ public class Endereco {
         this.numero = numero;
     }
 
-    public void setBairro(Bairro bairro) {
-        this.bairro = bairro;
-    }
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
     @Override
     public String toString() {
-        return "Endereco{" + "codEndereco=" + codEndereco + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", empresa=" + empresa + ", cliente=" + cliente + '}';
+        return "Endereco{" + "codEndereco=" + codEndereco + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", empresa=" + empresa + ", bairros=" + bairros + '}';
     }
-    
-    
+
     
     
     

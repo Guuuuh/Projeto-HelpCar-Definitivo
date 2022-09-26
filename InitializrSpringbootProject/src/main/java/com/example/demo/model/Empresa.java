@@ -91,10 +91,16 @@ public class Empresa {
 	public void setContatoEmpresa (String contatoEmpresa) {
 		this.contatoEmpresa = contatoEmpresa;
 	}
-        
-        public void setEnderecosEmpresas (List<Endereco> EnderecosEmpresas){
+
+        public void setCodEmpresa(int codEmpresa) {
+            this.codEmpresa = codEmpresa;
+        }
+
+        public void setEnderecosEmpresas(List<Endereco> enderecosEmpresas) {
             this.enderecosEmpresas = enderecosEmpresas;
         }
+
+        
 	
        
 	//addEndereco

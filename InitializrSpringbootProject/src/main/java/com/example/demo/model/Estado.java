@@ -1,10 +1,14 @@
 package com.example.demo.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,7 +28,15 @@ public class Estado {
 
     @Column(name = "pais")
     private String pais;
+    
+    @OneToMany
+    @JoinColumn(name = "codestado")
+    private List<Cidade> cidades = new ArrayList<>();
 
+    public Estado() {
+    }
+    
+    
     public Estado(Integer codEstado, String nome, String uf, String pais) {
         this.codEstado = codEstado;
         this.nome = nome;
@@ -60,8 +72,17 @@ public class Estado {
         this.pais = pais;
     }
 
+    public List<Cidade> getCidades() {
+        return cidades;
+    }
+
+    public void setCidades(List<Cidade> cidades) {
+        this.cidades = cidades;
+    }
+
     @Override
     public String toString() {
-        return "Estado{" + "codEstado=" + codEstado + ", nome=" + nome + ", uf=" + uf + ", pais=" + pais + '}';
+        return "Estado{" + "codEstado=" + codEstado + ", nome=" + nome + ", uf=" + uf + ", pais=" + pais + ", cidades=" + cidades + '}';
     }
+
 }
