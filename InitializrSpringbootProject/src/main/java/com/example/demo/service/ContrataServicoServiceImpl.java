@@ -5,7 +5,9 @@ import com.example.demo.repository.ContrataServicoRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ContrataServicoServiceImpl implements ContrataServicoService {
     
     @Autowired

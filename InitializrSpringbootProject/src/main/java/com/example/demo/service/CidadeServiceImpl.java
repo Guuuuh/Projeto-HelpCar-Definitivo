@@ -6,11 +6,13 @@ import com.example.demo.repository.CidadeRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author gabrielvitoretti
  */
+@Service
 public class CidadeServiceImpl implements CidadeService {
 
     @Autowired

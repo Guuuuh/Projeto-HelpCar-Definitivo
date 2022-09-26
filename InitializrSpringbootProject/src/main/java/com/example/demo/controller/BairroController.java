@@ -28,7 +28,7 @@ public class BairroController {
     private BairroService bairroService;
 
     @GetMapping("/bairro")
-    public ResponseEntity<List<Bairro>> listaBairro() {
+    public ResponseEntity<List<Bairro>> listaBairros() {
         return ResponseEntity.status(HttpStatus.OK).body(bairroService.listaBairros());
     }
 
