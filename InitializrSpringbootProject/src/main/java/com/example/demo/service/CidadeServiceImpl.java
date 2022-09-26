@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.example.demo.service;
 
 import com.example.demo.model.Cidade;
-import com.example.demo.model.Cliente;
 import com.example.demo.repository.CidadeRepository;
 import java.util.List;
 import java.util.Optional;
@@ -38,5 +34,10 @@ public class CidadeServiceImpl implements CidadeService {
     @Override
     public void deleteByIdCidade(Integer codCidade) {
         cidadeRepository.deleteById(codCidade);
+    }
+
+    @Override
+    public Cidade salvaCidade(Cidade cidade) {
+        return cidadeRepository.save(cidade);
     }
 }

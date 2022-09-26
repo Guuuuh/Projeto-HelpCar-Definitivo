@@ -50,6 +50,6 @@ public class EstadoController {
     @DeleteMapping("estado/{codestado}")
     public ResponseEntity<String> deleteByIdEstado(@PathVariable Integer codestado) {
         estadoService.deleteByIdEstado(codestado);
-        return ResponseEntity.status(HttpStatus.OK).body("Estado removida com sucesso");
+        return ResponseEntity.status(HttpStatus.OK).body("Estado removido com sucesso");
     }
 }

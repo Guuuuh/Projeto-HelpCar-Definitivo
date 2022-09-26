@@ -1,21 +1,24 @@
 
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author gabrielvitoretti
  */
-
+@Entity
+@Table(name = "cliente")
 public class Cliente {
     
     @Id
@@ -29,13 +32,16 @@ public class Cliente {
     @Column(name = "cpf")
     private String cpf;
     
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name = "codcliente")
-    private List<Endereco> enderecoCliente = new ArrayList<>();
+    @JsonIgnore
+    private List<Endereco> enderecosClientes = new ArrayList<>();
     
     @OneToMany
     @JoinColumn(name = "codcliente")
-    private List<Veiculo> veiculos = new ArrayList<>();
+    @JsonIgnore
+    private List<Veiculo> listaVeiculos = new ArrayList<>();
+    
 
     public Cliente() {
     }
@@ -45,6 +51,25 @@ public class Cliente {
         this.nome = nome;
         this.cpf = cpf;
     }
+
+    public List<Veiculo> getListaVeiculos() {
+        return listaVeiculos;
+    }
+
+    public void setListaVeiculos(List<Veiculo> listaVeiculos) {
+        this.listaVeiculos = listaVeiculos;
+    }
+
+    
+
+    public List<Endereco> getEnderecosClientes() {
+        return enderecosClientes;
+    }
+
+    public void setEnderecosClientes(List<Endereco> enderecosClientes) {
+        this.enderecosClientes = enderecosClientes;
+    }
+    
 
     public Integer getCodCliente() {
         return codCliente;
@@ -70,26 +95,15 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public List<Endereco> getEnderecoCliente() {
-        return enderecoCliente;
-    }
-
-    public void setEnderecoCliente(List<Endereco> enderecoCliente) {
-        this.enderecoCliente = enderecoCliente;
-    }
-
-    public List<Veiculo> getVeiculos() {
-        return veiculos;
-    }
-
-    public void setVeiculos(List<Veiculo> veiculos) {
-        this.veiculos = veiculos;
-    }
-
     @Override
     public String toString() {
-        return "Cliente{" + "codCliente=" + codCliente + ", nome=" + nome + ", cpf=" + cpf + ", enderecoCliente=" + enderecoCliente + ", veiculos=" + veiculos + '}';
+        return "Cliente{" + "codCliente=" + codCliente + ", nome=" + nome + ", cpf=" + cpf + ", enderecosClientes=" + enderecosClientes + ", listaVeiculos=" + listaVeiculos + '}';
     }
+
+
+    
+
+    
     
     
     
