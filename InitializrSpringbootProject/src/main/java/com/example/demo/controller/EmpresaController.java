@@ -27,22 +27,22 @@ public class EmpresaController {
         return ResponseEntity.status(HttpStatus.OK).body(empresaService.listaEmpresas());
     }
     
-    @GetMapping("empresa/{codempresa}")
+    @GetMapping("empresalista/{codempresa}")
     public ResponseEntity<Optional<Empresa>> getByIdEmpresa(@PathVariable Integer codempresa){
         return ResponseEntity.status(HttpStatus.OK).body(empresaService.getByIdEmpresa(codempresa));
     }
 
-    @PostMapping("empresa")
+    @PostMapping("criaempresa")
     public ResponseEntity<Empresa> salvaEmpresa(@RequestBody Empresa empresa){
         return ResponseEntity.status(HttpStatus.CREATED).body(empresaService.salvaEmpresa(empresa));
     }
 
-    @PutMapping("empresa")
+    @PutMapping("atualizaempresa")
     public ResponseEntity<Empresa> atualizaEmpresa(@RequestBody Empresa empresa){
         return ResponseEntity.status(HttpStatus.OK).body(empresaService.atualizaEmpresa(empresa));
     }
     
-    @DeleteMapping("empresa/{codempresa}")
+    @DeleteMapping("deleteempresa/{codEmpresa}")
     public ResponseEntity<String> deleteByIdEmpresa(@PathVariable Integer codempresa){
         empresaService.deleteByIdEmpresa(codempresa);
         return ResponseEntity.status(HttpStatus.OK).body("Empresa removida com sucesso");

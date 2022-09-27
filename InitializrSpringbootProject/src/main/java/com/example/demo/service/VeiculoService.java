@@ -14,6 +14,8 @@ public interface VeiculoService {
     
     public Optional<Veiculo> getByIdVeiculo(Integer codVeiculo);
     
+    public Veiculo salvaVeiculo(Veiculo veiculo);
+    
     public Veiculo atualizaVeiculo(Veiculo veiculo);
     
     public void deleteByIdVeiculo(Integer codVeiculo);

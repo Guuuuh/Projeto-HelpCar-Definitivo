@@ -14,6 +14,8 @@ public interface ClienteService {
     
     public Optional<Cliente> getByIdCliente(Integer codCliente);
     
+    public Cliente salvaCliente(Cliente cliente);
+    
     public Cliente atualizaCliente(Cliente cliente);
     
     public void deleteByIdCliente(Integer codCliente);

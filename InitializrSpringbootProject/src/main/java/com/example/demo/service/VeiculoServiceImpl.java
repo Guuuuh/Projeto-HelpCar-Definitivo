@@ -37,5 +37,10 @@ public class VeiculoServiceImpl implements VeiculoService{
     public void deleteByIdVeiculo(Integer codVeiculo) {
         veiculoRepository.deleteById(codVeiculo);
     }
+
+    @Override
+    public Veiculo salvaVeiculo(Veiculo veiculo) {
+        return veiculoRepository.save(veiculo);
+    }
     
 }
