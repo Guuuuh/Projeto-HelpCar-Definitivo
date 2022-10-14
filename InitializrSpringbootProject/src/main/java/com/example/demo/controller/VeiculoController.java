@@ -2,9 +2,16 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Veiculo;
 import com.example.demo.service.VeiculoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Tag;
 import java.util.List;
 import java.util.Optional;
+import org.junit.jupiter.api.Tags;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,7 +30,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
+@Api(value = "/veiculo", tags = "Controller Veículos", description = "Controller dos veículos")
 public class VeiculoController {
+    
     @Autowired
     private VeiculoService veiculoService;
     
@@ -33,6 +42,11 @@ public class VeiculoController {
     }
     
     @GetMapping("veiculo/{codVeiculo}")
+    @ApiOperation("Obter detalhes de um cliente")
+    @ApiResponses({
+        @ApiResponse(code = 200, message = "Cliente encontrado"),
+        @ApiResponse(code = 404, message = "Cliente não encontrado")
+    })
     public ResponseEntity<Optional<Veiculo>> getByIdVeiculo(@PathVariable Integer codVeiculo){
         return ResponseEntity.status(HttpStatus.OK).body(veiculoService.getByIdVeiculo(codVeiculo));
     }
